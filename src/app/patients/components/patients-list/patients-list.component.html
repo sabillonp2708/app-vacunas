@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="create-button">
+        <button mat-raised-button color="primary" routerLink="create">Nuevo paciente</button>
+    </div>
+    
+    <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+      </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- identidad Column -->
+        <ng-container matColumnDef="identidad">
+            <th mat-header-cell *matHeaderCellDef> No. Identidad</th>
+            <td mat-cell *matCellDef="let element"> {{ element.identidad }} </td>
+        </ng-container>
+
+        <!-- nombre Column -->
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{ element.nombre }} </td>
+        </ng-container>
+
+        <!-- fechaNacimiento Column -->
+        <ng-container matColumnDef="fechaNacimiento">
+            <th mat-header-cell *matHeaderCellDef> Fecha de nacimiento </th>
+            <td mat-cell *matCellDef="let element"> {{ element.fechaNacimiento.toDate() | date: 'dd/MM/yyyy' }} </td>
+        </ng-container>
+
+        <!-- telefono Column -->
+        <ng-container matColumnDef="telefono">
+            <th mat-header-cell *matHeaderCellDef> Telefono </th>
+            <td mat-cell *matCellDef="let element"> {{ element.telefono }}</td>
+        </ng-container>
+
+        <!-- domicilio Column -->
+        <ng-container matColumnDef="domicilio">
+            <th mat-header-cell *matHeaderCellDef> Domicilio </th>
+            <td mat-cell *matCellDef="let element"> {{ element.domicilio }}</td>
+        </ng-container>
+
+        <!-- centro de vacunacion Column -->
+        <ng-container matColumnDef="centroVacunacion">
+            <th mat-header-cell *matHeaderCellDef> Centro de vacunacion </th>
+            <td mat-cell *matCellDef="let element"> {{ element.centroVacunacion }}</td>
+        </ng-container>
+
+         <!-- primera dosis Column -->
+         <ng-container matColumnDef="primeraDosis">
+            <th mat-header-cell *matHeaderCellDef> 1ra dosis </th>
+            <td mat-cell *matCellDef="let element"> {{ element.primeraDosis }}</td>
+        </ng-container>
+
+        <!-- fecha de primmera dosis Column -->
+        <ng-container matColumnDef="fechaPrimeraDosis">
+            <th mat-header-cell *matHeaderCellDef> Fecha 1ra dosis </th>
+            <td mat-cell *matCellDef="let element"> {{ element.fechaPrimeraDosis.toDate() | date: 'dd/MM/yyyy' }} </td>
+        </ng-container>
+
+        <!-- segunda dosis Column -->
+        <ng-container matColumnDef="segundaDosis">
+            <th mat-header-cell *matHeaderCellDef> 2da dosis </th>
+            <td mat-cell *matCellDef="let element"> {{ element.segundaDosis }}</td>
+        </ng-container>
+
+        <!-- fecha de segunda dosis Column -->
+        <ng-container matColumnDef="fechaSegundaDosis">
+            <th mat-header-cell *matHeaderCellDef> Fecha 2da dosis </th>
+            <td mat-cell *matCellDef="let element"> {{ element.fechaSegundaDosis.toDate() | date: 'dd/MM/yyyy' }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Acciones</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button [routerLink]="element.uid">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deletePatient(element.uid)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

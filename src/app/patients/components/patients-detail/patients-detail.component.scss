@@ -1,0 +1,18 @@
+.form-container {
+    padding: 2rem;
+    width: 100%;
+}
+
+.form-content {
+    width: 50%;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+mat-form-field {
+    display: block;
+}

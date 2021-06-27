@@ -1,0 +1,70 @@
+<div class="form-container">
+    <div class="form-content">
+        <mat-card>
+            <mat-card-title>
+                Información del Paciente
+            </mat-card-title>
+
+            <form [formGroup]="patientForm">
+                <mat-form-field appearance="outline">
+                    <mat-label>No. Identidad</mat-label>
+                    <input formControlName="identidad" matInput type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre completo</mat-label>
+                    <input formControlName="nombre" matInput type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input (dateInput)="inputBirthDate($event)" formControlName="fechaNacimiento" matInput
+                        [matDatepicker]="birthDate" [disabled]="true">
+                    <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
+                    <mat-datepicker #birthDate disabled="false"></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Telefono</mat-label>
+                    <input formControlName="telefono" matInput type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Domicilio</mat-label>
+                    <input formControlName="domicilio" matInput type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Centro de vacunacion</mat-label>
+                    <input formControlName="centroVacunacion" matInput type="text">
+                </mat-form-field>
+
+             <mat-slide-toggle formControlName="primeraDosis">Primera Dosis: {{ PrimeraDosis }}</mat-slide-toggle>
+
+             <mat-form-field appearance="outline">
+                <mat-label>Fecha Primera Dosis</mat-label>
+                <input (dateInput)="inputPrimeraDosis($event)" formControlName="fechaPrimeraDosis" matInput
+                    [matDatepicker]="firstDosis" [disabled]="true">
+                <mat-datepicker-toggle matSuffix [for]="firstDosis"></mat-datepicker-toggle>
+                <mat-datepicker #firstDosis disabled="false"></mat-datepicker>
+            </mat-form-field>
+
+            <mat-slide-toggle formControlName="segundaDosis">Segunda Dosis: {{ SegundaDosis }}</mat-slide-toggle>
+
+             <mat-form-field appearance="outline">
+                <mat-label>Fecha Segunda Dosis</mat-label>
+                <input (dateInput)="inputSegundaDosis($event)" formControlName="fechaSegundaDosis" matInput
+                    [matDatepicker]="secondDosis" [disabled]="true">
+                <mat-datepicker-toggle matSuffix [for]="secondDosis"></mat-datepicker-toggle>
+                <mat-datepicker #secondDosis disabled="false"></mat-datepicker>
+            </mat-form-field>
+
+                <mat-card-actions class="form-actions">
+                    <button mat-stroked-button color="primary" routerLink="..">Cancelar</button>
+                    <button *ngIf="patientUidPath" mat-stroked-button color="warn" (click)="deletePatient()">Eliminar paciente</button>
+                    <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+</div>

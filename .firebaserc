@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "vacunas-9707c": {
+      "hosting": {
+        "app-vacunas": [
+          "vacunas-9707c"
+        ]
+      }
+    }
+  }
+}
